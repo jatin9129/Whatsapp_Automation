@@ -149,6 +149,13 @@ async function connectWhatsAPP() {
         continue;
       }
 
+         // ❌ Skip auto-reply for groups
+      if (jid.endsWith("@g.us")) {
+         console.log("Group message detected, skipping auto-reply.");
+        continue;
+      }
+      
+
       // ✅ 4. Extract text
       const text = extractMessageText(msg);
       if (!text) return;
