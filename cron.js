@@ -3,7 +3,7 @@ const https = require("https");
 
 const job = new cron.CronJob("*/14 * * * *", function () {
   const hour = new Date().getHours();
-  if (hour >= 7 && hour < 23) {
+//  if (hour >= 7 && hour < 23) {
     https
       .get("https://whatsapp-automation-hze5.onrender.com", (res) => {
         if (res.statusCode === 200)
@@ -13,9 +13,9 @@ const job = new cron.CronJob("*/14 * * * *", function () {
       .on("error", (e) =>
         console.error("!!✅!!Error while Sending request", e)
       );
-  } else {
-    console.log("!!✅!!Skipping ping during inactive hours");
-  }
+//  } else {
+//    console.log("!!✅!!Skipping ping during inactive hours");
+//  }
 });
 
 module.exports = job;
